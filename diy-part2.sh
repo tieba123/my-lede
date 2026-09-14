@@ -19,11 +19,5 @@
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
-# 1. 查找 Cudy TR3000 v1 的 DTS 文件路径
-DTS_FILE=$(find target/linux/ -name "mt7981b-cudy-tr3000-v1.dts")
-
-# 2. 如果找到了文件，就把复位键的键值 KEY_RESTART 替换为无效键值 KEY_RESERVED
-if [ -n "$DTS_FILE" ]; then
-    sed -i 's/KEY_RESTART/KEY_RESERVED/g' $DTS_FILE
-    echo "成功：已将 $DTS_FILE 中的复位键失效化处理！"
-fi
+# 克隆 HomeProxy 及其依赖
+git clone https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
