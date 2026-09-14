@@ -10,9 +10,10 @@
 # See /LICENSE for more information.
 #
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+# 1. 暴力删除上游源码默认带的所有 helloworld 引用，斩断冲突根源
+sed -i '/helloworld/d' feeds.conf.default
 
-# Add a feed source
+# 2. 安全地添加你指定的 helloworld 源码
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+
+# 如果你还需要在固件里集成 ZeroTier 等其他依赖 feeds 的插件，也可以参照这种防冲突的格式写在下面
