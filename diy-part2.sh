@@ -21,3 +21,6 @@
 
 # 克隆 HomeProxy 及其依赖
 git clone https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
+# 在 diy-part2.sh 末尾追加以下两行拉取 MosDNS 及其依赖
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
